@@ -21,3 +21,13 @@ string Passenger ::getType()
 {
     return this->type;
 }
+
+void Passenger ::setName(string name)
+{
+    this->name = name;
+}
+
+void Passenger ::setType(string type)
+{
+    this->type = type;
+}

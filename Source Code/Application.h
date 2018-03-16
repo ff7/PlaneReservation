@@ -7,19 +7,27 @@
 
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include "Passenger.h"
+#include "RegisteredPassenger.h"
+#include "Company.h"
+#include "Utilities.h"
+#include "Date.h"
 
 using namespace std;
 
 class Application
 {
 private:
-    string test;
+    Company company;
 public:
     Application();
-    void getTest();
+    void startApp();
     void loadRegisteredPassengers(string path);
     void loadAirplanes();
     void loadFlights();
+    void treatPassengerInfo(vector<string> passengerInfo);
+
 
 };
 

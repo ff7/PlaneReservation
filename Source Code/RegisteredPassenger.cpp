@@ -37,3 +37,13 @@ double RegisteredPassenger ::getAverageNFlights()
 {
     return this->averageNFlights;
 }
+
+void RegisteredPassenger ::setDateOfBirth(Date dateOfBirth)
+{
+    this->dateOfBirth = dateOfBirth;
+}
+
+void RegisteredPassenger ::setJob(string job)
+{
+    this->job = job;
+}

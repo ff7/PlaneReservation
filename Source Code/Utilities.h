@@ -6,11 +6,14 @@
 #define PLANERESERVATION_UTILITIES_H
 
 #include <iostream>
+#include "Date.h"
+#include <string>
 
-class Utilities
-{
-private:
-public:
-    int* dateToArray(); // retorna o apontador para a primeira posicao do array
-};
+using namespace std;
+
+
+int* dateToArray(); // retorna o apontador para a primeira posicao do array
+Date stringToDate(string s);
+int stringToInt(string s);
+
 #endif //PLANERESERVATION_UTILITIES_H

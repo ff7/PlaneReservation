@@ -18,6 +18,8 @@ public:
     Passenger(string name);
     string getName();
     string getType();
+    void setName(string name);
+    void setType(string type); // Caso algum passageiro queira mudar
 
 };
 
