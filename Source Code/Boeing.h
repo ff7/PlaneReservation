@@ -18,7 +18,7 @@ private:
     int normalPrice;
     int speed;
 public:
-    Boeing(int capacity, int normalPrice, int speed);
+    Boeing(string type, int capacity, int normalPrice, int speed);
     string getType();
     int getCapacity();
     int getNormalPrice();

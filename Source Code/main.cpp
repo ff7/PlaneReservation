@@ -8,6 +8,5 @@ int main()
 {
     Application app;
     app.startApp();
-    app.loadRegisteredPassengers("/Users/ff/CLionProjects/PlaneReservation/res/RegisteredPassengers.txt");
     return 0;
 }

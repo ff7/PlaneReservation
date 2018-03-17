@@ -4,12 +4,10 @@
 
 #include "Boeing.h"
 
-Boeing :: Boeing(int capacity, int normalPrice, int speed)
+Boeing :: Boeing(string type, int capacity, int normalPrice, int speed)
 {
-    this->capacity = capacity;
-    this->normalPrice = normalPrice;
-    this->speed = speed;
-    this->type = "boeing";
+    Airplane(capacity,normalPrice,speed);
+    this->type = type;
 }
 
 int Boeing :: getCapacity()

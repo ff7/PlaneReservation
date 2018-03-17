@@ -47,3 +47,7 @@ void RegisteredPassenger ::setJob(string job)
 {
     this->job = job;
 }
+
+void RegisteredPassenger ::setAverageNFlights(int n) {
+    this->averageNFlights = n;
+}

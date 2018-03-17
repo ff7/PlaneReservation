@@ -18,7 +18,7 @@ private:
     int normalPrice;
     int speed;
 public:
-    Concorde(int capacity, int normalPrice, int speed);
+    Concorde(string type, int capacity, int normalPrice, int speed);
     string getType();
     int getCapacity();
     int getNormalPrice();

@@ -4,12 +4,10 @@
 
 #include "Concorde.h"
 
-Concorde :: Concorde(int capacity, int normalPrice, int speed)
+Concorde :: Concorde(string type, int capacity, int normalPrice, int speed)
 {
-    this->capacity = capacity;
-    this->normalPrice = normalPrice;
-    this->speed = speed;
-    this->type = "concorde";
+    Airplane(capacity, normalPrice, speed);
+    this->type = type;
 }
 
 int Concorde :: getCapacity()

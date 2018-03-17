@@ -28,6 +28,7 @@ public:
     double getAverageNFlights();
     void setJob(string job);
     void setDateOfBirth(Date dateOfBirth);
+    void setAverageNFlights(int n);
 
 
 };

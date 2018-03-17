@@ -31,6 +31,10 @@ public:
     vector<Flight> getFligthList();
     void addClient(RegisteredPassenger p);
     void listClients();
+    void addAirplane(Airplane a);
+    void listAirplanes();
+    void addFlight(Flight f);
+    void listFlights();
 
 
 };

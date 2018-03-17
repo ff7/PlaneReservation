@@ -23,10 +23,18 @@ private:
 public:
     Application();
     void startApp();
+    // Loading Passengers
     void loadRegisteredPassengers(string path);
-    void loadAirplanes();
-    void loadFlights();
     void treatPassengerInfo(vector<string> passengerInfo);
+    RegisteredPassenger createClient(string s);
+    // Loading airplanes
+    void loadAirplanes(string path);
+    void treatAirplaneInfo(vector<string> airplaneInfo);
+    Airplane createAirplane(string s);
+    // Loadinf Flights
+    void loadFlights(string path);
+    void treatFlightInfo(vector<string> flightInfo);
+    Airplane createFlight(string s);
 
 
 };
