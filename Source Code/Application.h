@@ -30,8 +30,8 @@ public:
     // Loading airplanes
     void loadAirplanes(string path);
     void treatAirplaneInfo(vector<string> airplaneInfo);
-    Airplane createAirplane(string s);
-    // Loadinf Flights
+    Airplane *createAirplane(string s);
+    // Loading Flights
     void loadFlights(string path);
     void treatFlightInfo(vector<string> flightInfo);
     Airplane createFlight(string s);

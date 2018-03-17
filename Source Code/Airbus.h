@@ -18,11 +18,13 @@ private:
     int normalPrice;
     int speed;
 public:
+    Airbus();
     Airbus(string type, int capacity, int normalPrice, int speed);
     string getType();
     int getCapacity();
     int getNormalPrice();
     int getSpeed();
+    void setType(string type);
 
 };
 

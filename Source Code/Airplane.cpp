@@ -4,7 +4,11 @@
 
 #include "Airplane.h"
 
-Airplane ::Airplane() {}
+Airplane ::Airplane() {
+    this->speed = 0;
+    this->normalPrice = 0;
+    this->capacity = 0;
+}
 
 Airplane :: Airplane(int capacity, int normalPrice, int speed)
 {
@@ -31,4 +35,16 @@ int Airplane ::getSpeed()
 string Airplane ::getType()
 {
     return this->type;
+}
+
+void Airplane ::setCapacity(int capacity) {
+    this->capacity = capacity;
+}
+
+void Airplane ::setNormalPrice(int normalPrice) {
+    this->normalPrice = normalPrice;
+}
+
+void Airplane ::setSpeed(int speed) {
+    this->speed = speed;
 }

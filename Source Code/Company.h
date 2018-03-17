@@ -20,18 +20,18 @@ class Company
 {
 private:
     string name;
-    vector<Airplane> fleet;
+    vector<Airplane *> fleet;
     vector<RegisteredPassenger> clientList;
     vector<Flight> flightList;
 public:
     Company();
     Company(string name);
-    vector<Airplane> getFleet();
+    vector<Airplane*> getFleet();
     vector<RegisteredPassenger> getClientList();
     vector<Flight> getFligthList();
     void addClient(RegisteredPassenger p);
     void listClients();
-    void addAirplane(Airplane a);
+    void addAirplane(Airplane *a);
     void listAirplanes();
     void addFlight(Flight f);
     void listFlights();

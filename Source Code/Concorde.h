@@ -18,11 +18,13 @@ private:
     int normalPrice;
     int speed;
 public:
+    Concorde();
     Concorde(string type, int capacity, int normalPrice, int speed);
     string getType();
     int getCapacity();
     int getNormalPrice();
     int getSpeed();
+    void setType(string type);
 
 };
 

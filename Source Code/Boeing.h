@@ -18,11 +18,14 @@ private:
     int normalPrice;
     int speed;
 public:
+    Boeing();
+    Boeing(string type, Airplane a);
     Boeing(string type, int capacity, int normalPrice, int speed);
     string getType();
     int getCapacity();
     int getNormalPrice();
     int getSpeed();
+    void setType(string type);
 
 };
 #endif //PLANERESERVATION_BOEING_H

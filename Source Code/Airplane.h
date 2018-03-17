@@ -23,7 +23,10 @@ public:
     int getCapacity();
     int getNormalPrice();
     int getSpeed();
-
+    void setCapacity(int capacity);
+    void setNormalPrice(int normalPrice);
+    void setSpeed(int speed);
+    virtual void setType(string type){};
 };
 
 #endif //PLANERESERVATION_AIRPLANE_H

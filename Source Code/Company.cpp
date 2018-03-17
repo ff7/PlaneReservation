@@ -14,7 +14,7 @@ Company :: Company(string name)
     this->name = name;
 }
 
-vector<Airplane> Company :: getFleet()
+vector<Airplane*> Company :: getFleet()
 {
     return this->fleet;
 }
@@ -40,14 +40,14 @@ void Company ::listClients()
     }
 }
 
-void Company ::addAirplane(Airplane a) {
+void Company ::addAirplane(Airplane *a) {
     this->fleet.push_back(a);
 }
 
 void Company ::listAirplanes() {
     for (int i = 0; i < fleet.size(); i++)
     {
-        cout << fleet[i].getCapacity();
+       // cout << fleet[i].getCapacity() << " " << fleet[i].getNormalPrice() << " " << fleet[i].getSpeed() << endl;
     }
 }
 

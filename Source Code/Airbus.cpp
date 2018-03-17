@@ -4,9 +4,18 @@
 
 #include "Airbus.h"
 
+Airbus :: Airbus(){
+    this->type = " ";
+    this->speed = 0;
+    this->normalPrice = 0;
+    this->capacity = 0;
+}
+
 Airbus :: Airbus(string type, int capacity, int normalPrice, int speed)
 {
-    Airplane(capacity,normalPrice,speed);
+    this->capacity = capacity;
+    this->normalPrice = normalPrice;
+    this->speed = speed;
     this->type = type;
 }
 
@@ -28,4 +37,8 @@ int Airbus ::getSpeed()
 string Airbus ::getType()
 {
     return this->type;
+}
+
+void Airbus :: setType(string type){
+    this->type = type;
 }

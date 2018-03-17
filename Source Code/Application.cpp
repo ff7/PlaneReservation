@@ -93,13 +93,16 @@ void Application ::treatAirplaneInfo(vector<string> airplaneInfo)
 {
     for (int i = 0; i < airplaneInfo.size(); i++)
     {
-        this->company.addAirplane(createAirplane(airplaneInfo[i]));
+        Airplane *a = createAirplane(airplaneInfo[i]);
+        this->company.addAirplane(a);
     }
 }
 
-Airplane Application ::createAirplane(string s) {
+Airplane *Application ::createAirplane(string s) {
     string type, capacity, price, speed;
     vector<string> v = {type, capacity, price, speed};
+
+    Airplane *a;
 
     string :: iterator it = s.begin();
     int count = 0;
@@ -115,11 +118,29 @@ Airplane Application ::createAirplane(string s) {
             count++;
         }
     }
-    if (v[0] == "Airbus")
-        return Airbus(v[0],stringToInt(v[1]),stringToInt(v[2]),stringToInt(v[3]));
-    else if (v[0] == "Boeing")
-        return Boeing(v[0],stringToInt(v[1]),stringToInt(v[2]),stringToInt(v[3]));
-    else if (v[0] == "Concorde")
-        return Concorde(v[0],stringToInt(v[1]),stringToInt(v[2]),stringToInt(v[3]));
-    return Airplane(stringToInt(v[1]),stringToInt(v[2]),stringToInt(v[3]));
+
+    if (v[0] == "Boeing") {
+        a = new Boeing();
+        a->setType(v[0]);
+        a->setCapacity(stringToInt(v[1]));
+        a->setNormalPrice(stringToInt(v[2]));
+        a->setSpeed(stringToInt(v[3]));
+        return a;
+    }
+    else if (v[0] == "Airbus"){
+        a = new Boeing();
+        a->setType(v[0]);
+        a->setCapacity(stringToInt(v[1]));
+        a->setNormalPrice(stringToInt(v[2]));
+        a->setSpeed(stringToInt(v[3]));
+        return a;    }
+    else if (v[0] == "Concorde"){
+        a = new Boeing();
+        a->setType(v[0]);
+        a->setCapacity(stringToInt(v[1]));
+        a->setNormalPrice(stringToInt(v[2]));
+        a->setSpeed(stringToInt(v[3]));
+        return a;    }
+
+    return nullptr;
 }
