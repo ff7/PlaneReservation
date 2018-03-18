@@ -19,7 +19,7 @@ private:
 public:
     Airplane();
     Airplane(int capacity, int normalPrice, int speed);
-    string getType();
+    virtual string getType();
     int getCapacity();
     int getNormalPrice();
     int getSpeed();

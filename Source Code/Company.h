@@ -16,6 +16,7 @@
 #include "Concorde.h"
 #include "Passenger.h"
 #include "RegisteredPassenger.h"
+#include "Utilities.h"
 
 class Company
 {

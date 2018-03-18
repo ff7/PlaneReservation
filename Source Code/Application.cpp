@@ -14,6 +14,8 @@ void Application ::startApp()
     loadRegisteredPassengers("/Users/ff/CLionProjects/PlaneReservation/res/RegisteredPassengers.txt");
     loadAirplanes("/Users/ff/CLionProjects/PlaneReservation/res/Airplanes.txt");
     loadFlights("/Users/ff/CLionProjects/PlaneReservation/res/Flights.txt");
+    this->company.listClients();
+    this->company.listAirplanes();
     this->company.listFlights();
 }
 

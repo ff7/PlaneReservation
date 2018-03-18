@@ -34,9 +34,14 @@ void Company :: addClient(RegisteredPassenger p)
 
 void Company ::listClients()
 {
+    cout << endl << "|| ---------------------------------------------------------- ||";
+    cout << endl << "|| ----------------- RegisteredPassengers ------------------- ||";
+    cout << endl << "|| ---------------------------------------------------------- ||" << endl;
+
     for (int i = 0; i < clientList.size(); i++)
     {
-        cout << clientList[i].getName() << " " << clientList[i].getJob();
+        cout << i + 1 << " - " << clientList[i].getName() << ": ";
+        cout << clientList[i].getJob() << " | " << dateToString(clientList[i].getDateOfBirth()) << " | " << clientList[i].getAverageNFlights() << endl;
     }
 }
 
@@ -45,9 +50,15 @@ void Company ::addAirplane(Airplane *a) {
 }
 
 void Company ::listAirplanes() {
+
+    cout << endl << "|| ---------------------------------------------------------- ||";
+    cout << endl << "|| ------------------------- Fleet -------------------------- ||";
+    cout << endl << "|| ---------------------------------------------------------- ||" << endl;
+
     for (int i = 0; i < fleet.size(); i++)
     {
-       // cout << fleet[i].getCapacity() << " " << fleet[i].getNormalPrice() << " " << fleet[i].getSpeed() << endl;
+        cout << i + 1 << " - " << fleet[i]->getType() << ": ";
+        cout << fleet[i]->getCapacity() << " | " << fleet[i]->getNormalPrice() << " | " << fleet[i]->getSpeed() << endl;
     }
 }
 
@@ -56,8 +67,21 @@ void Company ::addFlight(Flight * f) {
 }
 
 void Company ::listFlights() {
+
+    cout << endl << "|| ---------------------------------------------------------- ||";
+    cout << endl << "|| ---------------------- Flight List ----------------------- ||";
+    cout << endl << "|| ---------------------------------------------------------- ||" << endl;
+
     for (int i = 0; i < flightList.size(); i++)
     {
-        cout << flightList[i]->getPassengerList()[0].getName();
+        cout << i + 1 << " - " << flightList[i]->getAirplane()->getType() << ": ";
+        for (int j = 0; j < flightList[i]->getPassengerList().size(); j++){
+            if (j != (flightList[i]->getPassengerList().size() - 1))
+                cout << flightList[i]->getPassengerList()[j].getName() << ",";
+            else
+                cout << flightList[i]->getPassengerList()[j].getName();
+        }
+        cout << " | " << dateToString(flightList[i]->getArrivalDate()) << " | " << dateToString(flightList[i]->getDepartureDate());
+        cout << " | " << locationToString(flightList[i]->getArrivalLocation()) << " | " << locationToString(flightList[i]->getDepartureLocation()) << endl;
     }
 }
