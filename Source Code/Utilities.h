@@ -7,13 +7,21 @@
 
 #include <iostream>
 #include "Date.h"
+#include "Location.h"
+#include "Passenger.h"
+#include "Airplane.h"
+#include "Airbus.h"
+#include "Boeing.h"
+#include "Concorde.h"
 #include <string>
+#include <vector>
 
 using namespace std;
 
-
-int* dateToArray(); // retorna o apontador para a primeira posicao do array
+Location stringToLocation(string s);
 Date stringToDate(string s);
 int stringToInt(string s);
+vector<Passenger> stringToPassengerVector(string s);
+Airplane * stringToAirplane(string s);
 
 #endif //PLANERESERVATION_UTILITIES_H

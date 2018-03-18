@@ -34,7 +34,7 @@ public:
     // Loading Flights
     void loadFlights(string path);
     void treatFlightInfo(vector<string> flightInfo);
-    Airplane createFlight(string s);
+    Flight *createFlight(string s);
 
 
 };

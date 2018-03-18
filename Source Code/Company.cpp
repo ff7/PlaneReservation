@@ -22,7 +22,7 @@ vector<RegisteredPassenger> Company :: getClientList()
 {
     return this->clientList;
 }
-vector<Flight> Company :: getFligthList()
+vector<Flight*> Company :: getFligthList()
 {
     return this->flightList;
 }
@@ -51,13 +51,13 @@ void Company ::listAirplanes() {
     }
 }
 
-void Company ::addFlight(Flight f) {
+void Company ::addFlight(Flight * f) {
     this->flightList.push_back(f);
 }
 
 void Company ::listFlights() {
     for (int i = 0; i < flightList.size(); i++)
     {
-        cout << flightList[i].getAirplane().getType();
+        cout << flightList[i]->getPassengerList()[0].getName();
     }
 }

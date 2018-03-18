@@ -23,20 +23,28 @@ using namespace std;
 class Flight
 {
 private:
-    Airplane airplane;
-    vector<Passenger> passengerList;
+    Airplane *airplane;
     Date departureDate;
     Date arrivalDate;
     Location departureLocation;
     Location arrivalLocation;
 public:
-    Flight(Airplane airplane, vector<Passenger> passengerList, Date departureDate, Date arrivalDate, Location departureLocation, Location arrivalLocation);
-    Airplane getAirplane();
-    vector<Passenger> getPassengerList();
+    Flight();
+    Flight(Airplane * airplane, Date departureDate, Date arrivalDate, Location departureLocation, Location arrivalLocation);
+    //Gets
+    Airplane* getAirplane();
     Date getDepartureDate();
     Date getArrivalDate();
     Location getDepartureLocation();
     Location getArrivalLocation();
+    virtual vector<Passenger> getPassengerList(){vector<Passenger> v = {}; return v;};
+    //Sets
+    void setAirplane(Airplane * a);
+    void setDepartureDate(Date departureDate);
+    void setArrivalDate(Date arrivalDate);
+    void setDepartureLocation(Location departureLocation);
+    void setArrivalLocation(Location arrivalLocation);
+    virtual void setPassengerList(vector<Passenger>){}
 
 };
 #endif //PLANERESERVATION_FLIGHT_H

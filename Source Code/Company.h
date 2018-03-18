@@ -9,7 +9,8 @@
 #include <vector>
 
 #include "Flight.h"
-#include "Airplane.h"
+#include "CommercialFlight.h"
+#include "RentedFlight.h"
 #include "Airplane.h"
 #include "Boeing.h"
 #include "Concorde.h"
@@ -22,18 +23,18 @@ private:
     string name;
     vector<Airplane *> fleet;
     vector<RegisteredPassenger> clientList;
-    vector<Flight> flightList;
+    vector<Flight*> flightList;
 public:
     Company();
     Company(string name);
     vector<Airplane*> getFleet();
     vector<RegisteredPassenger> getClientList();
-    vector<Flight> getFligthList();
+    vector<Flight*> getFligthList();
     void addClient(RegisteredPassenger p);
     void listClients();
     void addAirplane(Airplane *a);
     void listAirplanes();
-    void addFlight(Flight f);
+    void addFlight(Flight * f);
     void listFlights();
 
 

@@ -13,9 +13,8 @@ void Application ::startApp()
 {
     loadRegisteredPassengers("/Users/ff/CLionProjects/PlaneReservation/res/RegisteredPassengers.txt");
     loadAirplanes("/Users/ff/CLionProjects/PlaneReservation/res/Airplanes.txt");
-    //loadFlights("/Users/ff/CLionProjects/PlaneReservation/res/Flights.txt");
-    //this->company.listClients();
-    this->company.listAirplanes();
+    loadFlights("/Users/ff/CLionProjects/PlaneReservation/res/Flights.txt");
+    this->company.listFlights();
 }
 
 // Loading Passengers
@@ -106,6 +105,75 @@ Airplane *Application ::createAirplane(string s) {
 
     string :: iterator it = s.begin();
     int count = 0;
+    for (; it < s.end(); it++)
+    {
+        if((*it) != ';')
+        {
+            v.at(count).push_back(*it);
+        }
+        else
+        {
+            count++;
+        }
+    }
+    if (v[0] == "Boeing") {
+        a = new Boeing();
+        a->setType(v[0]);
+        a->setCapacity(stringToInt(v[1]));
+        a->setNormalPrice(stringToInt(v[2]));
+        a->setSpeed(stringToInt(v[3]));
+        return a;
+    }
+    else if (v[0] == "Airbus"){
+        a = new Airbus();
+        a->setType(v[0]);
+        a->setCapacity(stringToInt(v[1]));
+        a->setNormalPrice(stringToInt(v[2]));
+        a->setSpeed(stringToInt(v[3]));
+        return a;    }
+    else if (v[0] == "Concorde"){
+        a = new Concorde();
+        a->setType(v[0]);
+        a->setCapacity(stringToInt(v[1]));
+        a->setNormalPrice(stringToInt(v[2]));
+        a->setSpeed(stringToInt(v[3]));
+        return a;    }
+
+    return nullptr;
+}
+
+// Loading Flights
+
+void Application ::loadFlights(string path) {
+    ifstream buffer;
+    buffer.open(path);
+
+    string info;
+    vector<string> flightData;
+
+    while(!buffer.eof())
+    {
+        getline(buffer, info);
+        flightData.push_back(info);
+    }
+    treatFlightInfo(flightData);
+    buffer.close();
+}
+
+void Application ::treatFlightInfo(vector<string> flightInfo) {
+    for (int i = 0; i < flightInfo.size(); i++)
+    {
+        Flight *f = createFlight(flightInfo[i]);
+        this->company.addFlight(f);
+    }
+}
+
+Flight * Application ::createFlight(string s) {
+    string airplane, passengers, arrivalDate, departureDate, arrivalLocation, departureLocation;
+    vector<string> v = {airplane, passengers, arrivalDate, departureDate, arrivalLocation, departureLocation};
+
+    string :: iterator it = s.begin();
+    int count = 0;
 
     for (; it < s.end(); it++)
     {
@@ -119,28 +187,28 @@ Airplane *Application ::createAirplane(string s) {
         }
     }
 
-    if (v[0] == "Boeing") {
-        a = new Boeing();
-        a->setType(v[0]);
-        a->setCapacity(stringToInt(v[1]));
-        a->setNormalPrice(stringToInt(v[2]));
-        a->setSpeed(stringToInt(v[3]));
-        return a;
-    }
-    else if (v[0] == "Airbus"){
-        a = new Boeing();
-        a->setType(v[0]);
-        a->setCapacity(stringToInt(v[1]));
-        a->setNormalPrice(stringToInt(v[2]));
-        a->setSpeed(stringToInt(v[3]));
-        return a;    }
-    else if (v[0] == "Concorde"){
-        a = new Boeing();
-        a->setType(v[0]);
-        a->setCapacity(stringToInt(v[1]));
-        a->setNormalPrice(stringToInt(v[2]));
-        a->setSpeed(stringToInt(v[3]));
-        return a;    }
+    Flight *f;
 
-    return nullptr;
+    if (v[1].find(',')) // Se so tiver um passageiro e porque e alugado
+    {
+        f = new CommercialFlight();
+        f->setAirplane(stringToAirplane(v[0]));
+        f->setPassengerList(stringToPassengerVector(v[1]));
+        f->setArrivalDate(stringToDate(v[2]));
+        f->setDepartureDate(stringToDate(v[3]));
+        f->setArrivalLocation(stringToLocation(v[4]));
+        f->setDepartureLocation(stringToLocation(v[5]));
+        return f;
+    }
+    else{
+        f = new RentedFlight();
+        f->setAirplane(stringToAirplane(v[0]));
+        f->setPassengerList(stringToPassengerVector(v[1]));
+        f->setArrivalDate(stringToDate(v[2]));
+        f->setDepartureDate(stringToDate(v[3]));
+        f->setArrivalLocation(stringToLocation(v[4]));
+        f->setDepartureLocation(stringToLocation(v[5]));
+        return f;
+    }
 }
+

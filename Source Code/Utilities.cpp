@@ -5,10 +5,6 @@
 #include "Utilities.h"
 #include <string>
 
-int* dateToArray()
-{
-    return 0;
-}
 
 Date stringToDate(string s)
 {
@@ -20,7 +16,57 @@ Date stringToDate(string s)
 
 }
 
+Location stringToLocation(string s)
+{
+    string city = s.substr(0, s.find(','));
+    string country = s.substr(s.find(' '), s.size());
+    Location l(country, city);
+    return l;
+}
+
 int stringToInt(string s)
 {
     return stoi(s);
+}
+
+vector<Passenger> stringToPassengerVector(string s)
+{
+    vector<Passenger> v;
+    string :: iterator it = s.begin();
+
+    string name = "";
+    for (; it < s.end(); it++)
+    {
+        if ((*it) != ',')
+        {
+            name.push_back(*it);
+        }
+        else
+        {
+            Passenger p = Passenger(name);
+            v.push_back(p);
+            name = "";
+        }
+    }
+    return v;
+}
+
+Airplane * stringToAirplane(string s)
+{
+    Airplane * a;
+    if (s == "Boeing") {
+        a = new Boeing();
+        a->setType(s);
+        return a;
+    }
+    else if (s == "Airbus"){
+        a = new Airbus();
+        a->setType(s);
+        return a;    }
+    else if (s == "Concorde"){
+        a = new Concorde();
+        a->setType(s);
+        return a;    }
+
+    return nullptr;
 }
