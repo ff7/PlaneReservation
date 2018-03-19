@@ -14,12 +14,13 @@ void Application ::startApp()
     loadRegisteredPassengers("/Users/ff/CLionProjects/PlaneReservation/res/RegisteredPassengers.txt");
     loadAirplanes("/Users/ff/CLionProjects/PlaneReservation/res/Airplanes.txt");
     loadFlights("/Users/ff/CLionProjects/PlaneReservation/res/Flights.txt");
-    this->company.listClients();
+    this->company.listFlights();
     //this->company.listAirplanes();
     //this->company.listFlights();
-    addClient();
-    this->company.listClients();
-    saveRegisteredPassengers();
+    //addClient();
+    addFlight();
+    this->company.listFlights();
+    //saveRegisteredPassengers();
 }
 
 // Loading Passengers
@@ -230,6 +231,77 @@ void Application ::addClient() {
 
     RegisteredPassenger r = RegisteredPassenger(name, job, stringToDate(date), stringToInt(average));
     this->company.addClient(r);
+}
+
+
+void Application ::addAirplane() {
+    string type;
+    string capacity, price, speed;
+    cout << "Airplane Type: ";
+    cin >> type;
+    cout << "Capacity: ";
+    cin >> capacity;
+    cout << "Normal Price: ";
+    cin >> price;
+    cout << "Speed: ";
+    cin >> speed;
+
+    Airplane * a;
+
+    if (type == "Boeing"){
+        a = new Boeing(type, stringToInt(capacity), stringToInt(price), stringToInt(speed));
+    }
+    else if (type == "Airbus")
+        a = new Airbus(type, stringToInt(capacity), stringToInt(price), stringToInt(speed));
+    else if (type == "Concorde"){
+        a = new Concorde(type, stringToInt(capacity), stringToInt(price), stringToInt(speed));
+    }
+
+    this->company.addAirplane(a);
+}
+
+void Application ::addFlight() {
+    string airplane, arrivalDate, departureDate, arrivalLocation, departureLocation, passengerList;
+
+    cout << "Airplane Type: ";
+    cin >> airplane;
+    cout << "Passengers (Passenger X,Passenger Y,...): ";
+    getline(cin, passengerList);
+    cout << "Arrival Date (dd/mm/yyyy): ";
+    cin >> arrivalDate;
+    cout << "Departure Date (dd/mm/yyyy): ";
+    cin >> departureDate;
+    cout << "Arrival Location (City,Country): ";
+    getline(cin, arrivalLocation);
+    cout << "Departure Location (City,Country): ";
+    getline(cin, departureLocation);
+
+    Airplane * a;
+    if (airplane == "Boeing"){
+        a = new Boeing(airplane,0,0,0);
+    }
+    else if (airplane == "Airbus") {
+        a = new Airbus(airplane, 0, 0, 0);
+    }
+    else if (airplane == "Concorde"){
+        a = new Concorde(airplane,0,0,0);
+    }
+
+    Flight * f;
+    vector<Passenger> p;
+    p = stringToPassengerVector(passengerList);
+    Date ad = stringToDate(arrivalDate);
+    Date dd = stringToDate(departureDate);
+    Location al = stringToLocation(arrivalLocation);
+    Location dl = stringToLocation(departureLocation);
+
+    if (p.size() > 1)
+        f = new CommercialFlight(a, dd, ad, dl, al, p);
+    else
+        f = new RentedFlight(a, dd, ad, dl, al, p);
+
+    this->company.addFlight(f);
+
 }
 
 void Application ::saveRegisteredPassengers() {

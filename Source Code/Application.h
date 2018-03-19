@@ -37,8 +37,12 @@ public:
     Flight *createFlight(string s);
     //
     void addClient();
+    void addAirplane();
+    void addFlight();
     //
     void saveRegisteredPassengers();
+    void saveAirplanes();
+    void saveFlights();
 
 
 };
