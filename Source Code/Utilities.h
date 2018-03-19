@@ -25,5 +25,6 @@ vector<Passenger> stringToPassengerVector(string s);
 Airplane * stringToAirplane(string s);
 string dateToString(Date d);
 string locationToString(Location l);
+string intToString(int i);
 
 #endif //PLANERESERVATION_UTILITIES_H

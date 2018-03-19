@@ -35,6 +35,10 @@ public:
     void loadFlights(string path);
     void treatFlightInfo(vector<string> flightInfo);
     Flight *createFlight(string s);
+    //
+    void addClient();
+    //
+    void saveRegisteredPassengers();
 
 
 };

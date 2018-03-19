@@ -78,3 +78,8 @@ string dateToString(Date d){
 string locationToString(Location l){
     return (l.getCity() + "," + l.getCountry());
 }
+
+string intToString(int i)
+{
+    return to_string(i);
+}

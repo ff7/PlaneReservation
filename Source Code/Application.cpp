@@ -15,8 +15,11 @@ void Application ::startApp()
     loadAirplanes("/Users/ff/CLionProjects/PlaneReservation/res/Airplanes.txt");
     loadFlights("/Users/ff/CLionProjects/PlaneReservation/res/Flights.txt");
     this->company.listClients();
-    this->company.listAirplanes();
-    this->company.listFlights();
+    //this->company.listAirplanes();
+    //this->company.listFlights();
+    addClient();
+    this->company.listClients();
+    saveRegisteredPassengers();
 }
 
 // Loading Passengers
@@ -214,3 +217,33 @@ Flight * Application ::createFlight(string s) {
     }
 }
 
+void Application ::addClient() {
+    string name, job, date, average;
+    cout << "Client Name: ";
+    getline(cin, name);
+    cout << "Job: ";
+    getline(cin, job);
+    cout << "Date of Birth (dd/mm/yyyy): ";
+    cin >> date;
+    cout << "Average Number of Flights: ";
+    cin >> average;
+
+    RegisteredPassenger r = RegisteredPassenger(name, job, stringToDate(date), stringToInt(average));
+    this->company.addClient(r);
+}
+
+void Application ::saveRegisteredPassengers() {
+    ofstream file;
+    file.open("/Users/ff/CLionProjects/PlaneReservation/res/RegisteredPassengers.txt");
+
+    for (int i = 0; i < this->company.getClientList().size(); i++)
+    {
+        if (i != this->company.getClientList().size() - 1)
+            file << this->company.getClientList()[i].getName() + ";" + this->company.getClientList()[i].getJob() + ";" + dateToString(this->company.getClientList()[i].getDateOfBirth()) + ";" << (this->company.getClientList()[i].getAverageNFlights()) << ";\n";
+        else
+            file << this->company.getClientList()[i].getName() + ";" + this->company.getClientList()[i].getJob() + ";" + dateToString(this->company.getClientList()[i].getDateOfBirth()) + ";" << (this->company.getClientList()[i].getAverageNFlights()) << ";";
+
+    }
+
+    file.close();
+}
